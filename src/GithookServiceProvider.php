@@ -3,6 +3,8 @@
 namespace Digitlimit\Githook;
 
 use Illuminate\Support\ServiceProvider;
+use Digitlimit\Githook\Http\Controllers\GithookController;
+use Digitlimit\Githook\Providers\EventServiceProvider;
 
 class GithookServiceProvider extends ServiceProvider
 {
@@ -11,36 +13,25 @@ class GithookServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'githook');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'githook');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'githook');
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('githook.php'),
-            ], 'config');
+            
+            $this->publishes(
+                [
+                    __DIR__.'/../config/config.php' => config_path('githook.php'),
+                ], 
+                'config'
+            );
 
             // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/githook'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/githook'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/githook'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
+            $this->publishes(
+                [
+                    __DIR__.'/../resources/views' => resource_path('views/vendor/githook'),
+                ], 
+                'views'
+            );
         }
     }
 
@@ -49,12 +40,18 @@ class GithookServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->register(EventServiceProvider::class);
+        $this->app->make(GithookController::class);
+
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'githook');
 
         // Register the main class to use with the facade
-        $this->app->singleton('githook', function () {
-            return new Githook;
-        });
+        $this->app->singleton(
+            'githook', 
+            function () {
+                return new Githook;
+            }
+        );
     }
 }

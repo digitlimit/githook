@@ -1,8 +1,27 @@
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Github WebHook Secret
+    |--------------------------------------------------------------------------
+    |
+    | Github webhook secret.
+    |
+    */
+
+    'secret' => env('GITHOOK_SECRET', null),
+
+   
+    /*
+    |--------------------------------------------------------------------------
+    | Github WebHook URL
+    |--------------------------------------------------------------------------
+    |
+    | Github webhook URL.
+    |
+    */
+
+    'url' => env('GITHOOK_URL', 'githook'),
 ];
