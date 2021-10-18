@@ -8,4 +8,4 @@ use DigitLimit\Githook\Http\Controllers\GithookController;
  |--------------------------------------------------------------------------
  */
 
- Route::post('/githook', GithookController::class);
+ Route::post(config('githook.url'), GithookController::class);
