@@ -12,7 +12,6 @@ return [
     */
 
     'secret' => env('GITHOOK_SECRET', null),
-
    
     /*
     |--------------------------------------------------------------------------
@@ -23,5 +22,5 @@ return [
     |
     */
 
-    'url' => env('GITHOOK_URL', 'githook'),
+    'url' => env('GITHOOK_URL', '/githook'),
 ];
