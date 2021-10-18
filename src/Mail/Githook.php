@@ -11,9 +11,9 @@ class Githook extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $payload;
+    public $payload;
 
-    protected $type;
+    public $type;
 
     /**
      * Create a new message instance.
