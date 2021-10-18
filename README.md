@@ -6,6 +6,7 @@
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
+
 ## Installation
 
 You can install the package via composer:
@@ -15,6 +16,12 @@ composer require digitlimit/githook
 ```
 
 ## Usage
+1. Add
+
+1. Setup Github Webhook
+https://github.com/digitlimit/kcc-admin/settings/hooks
+
+![image](https://user-images.githubusercontent.com/2041419/137665069-f330f1e5-3907-4e59-a6b3-79c95be40ba0.png)
 
 ```php
 // Usage description here
