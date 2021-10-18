@@ -23,7 +23,7 @@ class Githook extends Mailable
     public function __construct(object $payload, string $type)
     {
         $this->payload = $payload;
-        $this->type = $type;
+        $this->type = ucwords(str_replace('_', ' ', $this->type));
     }
 
     /**
@@ -33,9 +33,6 @@ class Githook extends Mailable
      */
     public function build()
     {
-        return $this
-            ->view('githook::mail.webhook')
-            ->with('payload', $this->payload)
-            ->with('type', ucwords(str_replace('_', ' ', $this->type)));
+        return $this->view('githook::mail.webhook');
     }
 }
