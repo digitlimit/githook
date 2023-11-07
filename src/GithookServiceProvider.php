@@ -17,21 +17,7 @@ class GithookServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         if ($this->app->runningInConsole()) {
-            
-            $this->publishes(
-                [
-                    __DIR__.'/../config/config.php' => config_path('githook.php'),
-                ], 
-                'config'
-            );
-
-            // Publishing the views.
-            $this->publishes(
-                [
-                    __DIR__.'/../resources/views' => resource_path('views/vendor/githook'),
-                ], 
-                'views'
-            );
+            $this->bootForConsole();
         }
     }
 
@@ -43,15 +29,26 @@ class GithookServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
         $this->app->make(GithookController::class);
 
-        // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'githook');
 
-        // Register the main class to use with the facade
-        $this->app->singleton(
-            'githook', 
-            function () {
-                return new Githook;
-            }
-        );
+        $this->app->singleton('githook', function () {
+            return new Githook;
+        });
+    }
+
+    /**
+     * Console-specific booting.
+     *
+     * @return void
+     */
+    protected function bootForConsole(): void
+    {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('githook.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/githook'),
+        ], 'views');
     }
 }
