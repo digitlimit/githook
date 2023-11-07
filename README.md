@@ -22,6 +22,14 @@ php artisan vendor:publish --provider="Digitlimit\Githook\GithookServiceProvider
 
 ## Usage
 
+1. Add
+
+1. Setup Github Webhook
+https://github.com/digitlimit/kcc-admin/settings/hooks
+
+![image](https://user-images.githubusercontent.com/2041419/137665069-f330f1e5-3907-4e59-a6b3-79c95be40ba0.png)
+
+
 ```php
 // Usage description here
 ```
