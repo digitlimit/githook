@@ -4,9 +4,6 @@ namespace Digitlimit\Githook;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Digitlimit\Githook\Skeleton\SkeletonClass
- */
 class GithookFacade extends Facade
 {
     /**

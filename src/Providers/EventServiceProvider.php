@@ -7,9 +7,9 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        // PostWasCreated::class => [
-        //     UpdatePostTitle::class,
-        // ]
+        // 'Digitlimit\Githook\Events\GithookEvent' => [
+        //     'Digitlimit\Githook\Listeners\GithookListener',
+        // ],
     ];
 
     /**
