@@ -2,9 +2,9 @@
 
 namespace Digitlimit\Githook;
 
-use Illuminate\Support\ServiceProvider;
 use Digitlimit\Githook\Http\Controllers\GithookController;
 use Digitlimit\Githook\Providers\EventServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class GithookServiceProvider extends ServiceProvider
 {
@@ -38,8 +38,6 @@ class GithookServiceProvider extends ServiceProvider
 
     /**
      * Console-specific booting.
-     *
-     * @return void
      */
     protected function bootForConsole(): void
     {

@@ -2,24 +2,24 @@
 
 namespace Digitlimit\Githook\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Digitlimit\Githook\Events\NoPayload;
 use Digitlimit\Githook\Events\Webhook;
+use Illuminate\Http\Request;
 
 class GithookController extends Controller
 {
     /**
      * Perform the git hook.
      *
-     * @param Request $request
      * @return void
      */
     public function __invoke(Request $request)
     {
-        if (!$request->has('payload')) {
+        if (! $request->has('payload')) {
             NoPayload::dispatch($request->all());
             info('No payload received');
+
             return;
         }
 
@@ -41,8 +41,8 @@ class GithookController extends Controller
         $github_hash = request()->header('X-Hub-Signature');
         $secret = config('githook.secret');
         $payload = request()->getContent();
-        
-        $local_hash = 'sha1=' . hash_hmac('sha1', $payload, $secret, false);
+
+        $local_hash = 'sha1='.hash_hmac('sha1', $payload, $secret, false);
 
         return hash_equals($github_hash, $local_hash);
     }

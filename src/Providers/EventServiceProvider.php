@@ -3,8 +3,6 @@
 namespace Digitlimit\Githook\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
-use Digitlimit\Githook\Events\NoPayload;
 
 class EventServiceProvider extends ServiceProvider
 {
