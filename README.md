@@ -25,7 +25,7 @@ php artisan vendor:publish --provider="Digitlimit\Githook\GithookServiceProvider
 1. Add
 
 1. Setup Github Webhook
-https://github.com/your-username>/your-repo/settings/hooks
+https://github.com/your-username/your-repo/settings/hooks
 
 ![image](https://user-images.githubusercontent.com/2041419/137665069-f330f1e5-3907-4e59-a6b3-79c95be40ba0.png)
 
