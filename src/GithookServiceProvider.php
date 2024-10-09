@@ -2,7 +2,6 @@
 
 namespace Digitlimit\Githook;
 
-use Digitlimit\Githook\Http\Controllers\GithookController;
 use Digitlimit\Githook\Providers\EventServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -15,10 +14,6 @@ class GithookServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'githook');
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
     }
 
     /**
