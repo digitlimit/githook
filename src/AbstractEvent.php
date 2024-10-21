@@ -14,6 +14,26 @@ class AbstractEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * The type of event
+     */
+    public string $type = '';
+
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function type(): string
+    {
+        return $this->type;
+    }
+
+    public function payload(): object
+    {
+        return $this->payload;
+    }
+
 //    /**
 //     * Get the channels the event should broadcast on.
 //     *
