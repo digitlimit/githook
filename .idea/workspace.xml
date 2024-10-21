@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Events/BranchProtectionConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/BranchProtectionConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Events/BranchProtectionRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/BranchProtectionRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Events/WorkflowRun.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/WorkflowRun.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +72,7 @@
       <workItem from="1729278033669" duration="1187000" />
       <workItem from="1729335986068" duration="598000" />
       <workItem from="1729515859077" duration="6724000" />
-      <workItem from="1729545269798" duration="1356000" />
+      <workItem from="1729545269798" duration="3168000" />
     </task>
     <servers />
   </component>
