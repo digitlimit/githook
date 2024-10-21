@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AbstractEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-idea.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Events/NoPayload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Events/BranchProtectionConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/BranchProtectionConfiguration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Events/BranchProtectionRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/BranchProtectionRule.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +44,15 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -66,7 +75,8 @@
       <workItem from="1729160054646" duration="677000" />
       <workItem from="1729278033669" duration="1187000" />
       <workItem from="1729335986068" duration="598000" />
-      <workItem from="1729515859077" duration="3762000" />
+      <workItem from="1729515859077" duration="6724000" />
+      <workItem from="1729545269798" duration="1356000" />
     </task>
     <servers />
   </component>

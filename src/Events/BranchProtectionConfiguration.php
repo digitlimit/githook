@@ -9,7 +9,7 @@ class BranchProtectionConfiguration extends AbstractEvent
     /**
      * The type of event
      */
-    public $type = 'branch_protection_configuration';
+    public string $type = 'branch_protection_configuration';
 
     /**
      * Create a new event instance.

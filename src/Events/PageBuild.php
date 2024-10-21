@@ -4,12 +4,12 @@ namespace Digitlimit\Githook\Events;
 
 use Digitlimit\Githook\AbstractEvent;
 
-class BranchProtectionRule extends AbstractEvent
+class PageBuild extends AbstractEvent
 {
     /**
      * The type of event
      */
-    public string $type = 'branch_protection_rule';
+    public string $type = 'page_build';
     
     /**
      * Create a new event instance.

@@ -4,13 +4,13 @@ namespace Digitlimit\Githook\Events;
 
 use Digitlimit\Githook\AbstractEvent;
 
-class BranchProtectionRule extends AbstractEvent
+class DependabotAlert extends AbstractEvent
 {
     /**
      * The type of event
      */
-    public string $type = 'branch_protection_rule';
-    
+    public string $type = 'dependabot_alert';
+
     /**
      * Create a new event instance.
      *

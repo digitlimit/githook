@@ -14,7 +14,7 @@
         "github webhook",
         "github webhook events",
         "github webhook listener",
-        "laravel github webhook",
+        "laravel github webhook"
     ],
     "homepage": "https://github.com/digitlimit/githook",
     "license": "MIT",
@@ -27,7 +27,7 @@
         }
     ],
     "require": {
-        "php": "^7.0|^8.0"
+        "php": "^8.1"
     },
     "require-dev": {
         "orchestra/testbench": "^8.5",

@@ -4,13 +4,13 @@ namespace Digitlimit\Githook\Events;
 
 use Digitlimit\Githook\AbstractEvent;
 
-class BranchProtectionRule extends AbstractEvent
+class CustomPropertyValues extends AbstractEvent
 {
     /**
      * The type of event
      */
-    public string $type = 'branch_protection_rule';
-    
+    public string $type = 'custom_property_values';
+
     /**
      * Create a new event instance.
      *
