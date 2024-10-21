@@ -1,46 +1,35 @@
 {
     "name": "digitlimit/githook",
-    "description": "Laravel Git Webhook: A Laravel package for handling GitHub webhooks. Listen for GitHub webhook events from your Laravel application.",
+    "description": "Github Webhook Helper",
+    "keywords": [
+        "digitlimit",
+        "githook",
+        "github",
+        "webhook",
+        "laravel",
+        "laravel events",
+        "laravel listeners",
+        "listen for github events",
+        "github events",
+        "github webhook",
+        "github webhook events",
+        "github webhook listener",
+        "laravel github webhook",
+    ],
+    "homepage": "https://github.com/digitlimit/githook",
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Emeka Mbah",
             "email": "frankemeks77@yahoo.com",
-            "homepage": "https://emekambah.medium.com"
+            "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/digitlimit/githook",
-    "keywords": [
-        "laravel",
-        "github",
-        "webhooks",
-        "laravel-package",
-        "github-webhooks",
-        "webhook-handler",
-        "php",
-        "open-source",
-        "developer-tools",
-        "git-integration",
-        "github-integration",
-        "laravel-webhooks",
-        "webhook-events",
-        "event-listeners",
-        "laravel-git",
-        "git-automation",
-        "github-actions",
-        "continuous-integration",
-        "ci-cd",
-        "devops"
-    ],
     "require": {
-        "ext-json": "*",
-        "php": "^7.4|^8.0",
-        "illuminate/contracts": "^7.20|^8.19|^9.0|^10.0|^11.0",
-        "illuminate/support": "^7.20|^8.19|^9.0|^10.0|^11.0"
+        "php": "^7.0|^8.0"
     },
     "require-dev": {
-        "laravel/framework": "^7.20|^8.19|^9.0|^10.0|^11.0",
-        "phpunit/phpunit": "^10.0",
         "orchestra/testbench": "^8.5",
         "nunomaduro/collision": "^7.5",
         "pestphp/pest": "^2.5",
@@ -48,13 +37,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Digitlimit\\Githook\\": "src/"
+            "Digitlimit\\Githook\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Digitlimit\\Githook\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ]
     },
     "extra": {
         "laravel": {
@@ -66,16 +60,9 @@
             }
         }
     },
-    "scripts": {
-        "post-autoload-dump": [
-            "@php vendor/bin/testbench package:discover --ansi"
-        ]
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    }
 }
