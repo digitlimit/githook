@@ -110,4 +110,19 @@ return [
         'workflow_run' => Events\WorkflowRun::class,
         'generic' => Events\Generic::class,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Github WebHook Listeners
+    |--------------------------------------------------------------------------
+    |
+    | Its not mandatory to register listeners here, you can register listeners  
+    | in your EventServiceProvider. 
+    |
+    */
+    'listen' => [
+        CommitComment::class => [
+            \App\Listeners\CommitCommentListener::class,
+        ],
+    ],
 ];

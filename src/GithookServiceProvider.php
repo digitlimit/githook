@@ -30,10 +30,6 @@ class GithookServiceProvider extends ServiceProvider
         $this->app->make(GithookController::class);
 
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'githook');
-
-        $this->app->singleton('githook', function () {
-            return new Githook;
-        });
     }
 
     /**

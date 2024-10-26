@@ -6,11 +6,15 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 class EventServiceProvider extends ServiceProvider
 {
-    protected $listen = [
-        // 'Digitlimit\Githook\Events\GithookEvent' => [
-        //     'Digitlimit\Githook\Listeners\GithookListener',
-        // ],
-    ];
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    public function listens()
+    {
+        return config('githook.listen');
+    }
 
     /**
      * Register any events for your application.
