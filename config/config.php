@@ -121,8 +121,8 @@ return [
     |
     */
     'listen' => [
-        CommitComment::class => [
-            \App\Listeners\CommitCommentListener::class,
-        ],
+//        CommitComment::class => [
+//            \App\Listeners\CommitCommentListener::class,
+//        ],
     ],
 ];
