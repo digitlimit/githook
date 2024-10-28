@@ -1,6 +1,7 @@
 <?php
 
 use Digitlimit\Githook\Events;
+use Digitlimit\Githook\Http\Middleware;
 
 return [
 
@@ -14,7 +15,7 @@ return [
     */
 
     'secret' => env('GITHOOK_SECRET', null),
-   
+
     /*
     |--------------------------------------------------------------------------
     | Github WebHook URL
@@ -27,6 +28,16 @@ return [
     'url' => env('GITHOOK_URL', '/githook'),
 
     /*
+    |--------------------------------------------------------------------------
+    | Github WebHook Middleware
+    |--------------------------------------------------------------------------
+    |
+    | The middleware to be applied to the webhook route.
+    |
+    */
+    'middleware' => Middleware\VerifySignatureMiddleware::class,
+
+    /*
      |--------------------------------------------------------------------------
      | Github WebHook Events
      |--------------------------------------------------------------------------
@@ -35,94 +46,319 @@ return [
      |
      */
     'events' => [
-        'branch_protection_configuration' => Events\BranchProtectionConfiguration::class,
-        'branch_protection_rule' => Events\BranchProtectionRule::class,
-        'check_run' => Events\CheckRun::class,
-        'check_suite' => Events\CheckSuite::class,
-        'code_scanning_alert' => Events\CodeScanningAlert::class,
-        'commit_comment' => Events\CommitComment::class,
-        'create' => Events\Create::class,
-        'custom_property' => Events\CustomProperty::class,
-        'custom_property_values' => Events\CustomPropertyValues::class,
-        'delete' => Events\Delete::class,
-        'dependabot_alert' => Events\DependabotAlert::class,
-        'deploy_key' => Events\DeployKey::class,
-        'deployment' => Events\Deployment::class,
-        'deployment_protection_rule' => Events\DeploymentProtectionRule::class,
-        'deployment_review' => Events\DeploymentReview::class,
-        'deployment_status' => Events\DeploymentStatus::class,
-        'discussion' => Events\Discussion::class,
-        'discussion_comment' => Events\DiscussionComment::class,
-        'fork' => Events\Fork::class,
-        'github_app_authorization' => Events\GithubAppAuthorization::class,
-        'gollum' => Events\Gollum::class,
-        'installation' => Events\Installation::class,
-        'installation_repositories' => Events\InstallationRepositories::class,
-        'installation_target' => Events\InstallationTarget::class,
-        'issue_comment' => Events\IssueComment::class,
-        'issues' => Events\Issues::class,
-        'label' => Events\Label::class,
-        'marketplace_purchase' => Events\MarketplacePurchase::class,
-        'member' => Events\Member::class,
-        'membership' => Events\Membership::class,
-        'merge_group' => Events\MergeGroup::class,
-        'meta' => Events\Meta::class,
-        'milestone' => Events\Milestone::class,
-        'org_block' => Events\OrgBlock::class,
-        'organization' => Events\Organization::class,
-        'package' => Events\Package::class,
-        'page_build' => Events\PageBuild::class,
-        'personal_access_token_request' => Events\PersonalAccessTokenRequest::class,
-        'ping' => Events\Ping::class,
-        'project' => Events\Project::class,
-        'project_card' => Events\ProjectCard::class,
-        'project_column' => Events\ProjectColumn::class,
-        'projects_v2' => Events\ProjectsV2::class,
-        'projects_v2_item' => Events\ProjectsV2Item::class,
-        'projects_v2_status_update' => Events\ProjectsV2StatusUpdate::class,
-        'public' => Events\PublicEvent::class,
-        'pull_request' => Events\PullRequest::class,
-        'pull_request_review' => Events\PullRequestReview::class,
-        'pull_request_review_comment' => Events\PullRequestReviewComment::class,
-        'pull_request_review_thread' => Events\PullRequestReviewThread::class,
-        'push' => Events\Push::class,
-        'registry_package' => Events\RegistryPackage::class,
-        'release' => Events\Release::class,
-        'repository' => Events\Repository::class,
-        'repository_advisory' => Events\RepositoryAdvisory::class,
-        'repository_dispatch' => Events\RepositoryDispatch::class,
-        'repository_import' => Events\RepositoryImport::class,
-        'repository_ruleset' => Events\RepositoryRuleset::class,
-        'repository_vulnerability_alert' => Events\RepositoryVulnerabilityAlert::class,
-        'secret_scanning_alert' => Events\SecretScanningAlert::class,
-        'secret_scanning_alert_location' => Events\SecretScanningAlertLocation::class,
-        'security_advisory' => Events\SecurityAdvisory::class,
-        'security_and_analysis' => Events\SecurityAndAnalysis::class,
-        'sponsorship' => Events\Sponsorship::class,
-        'star' => Events\Star::class,
-        'status' => Events\Status::class,
-        'sub_issues' => Events\SubIssues::class,
-        'team' => Events\Team::class,
-        'team_add' => Events\TeamAdd::class,
-        'watch' => Events\Watch::class,
-        'workflow_dispatch' => Events\WorkflowDispatch::class,
-        'workflow_job' => Events\WorkflowJob::class,
-        'workflow_run' => Events\WorkflowRun::class,
-        'generic' => Events\Generic::class,
+        'branch_protection_configuration' => [
+            'event' => Events\BranchProtectionConfiguration::class,
+            'listeners' => [],
+        ],
+        'branch_protection_rule' => [
+            'event' => Events\BranchProtectionRule::class,
+            'listeners' => [],
+        ],
+        'check_run' => [
+            'event' => Events\CheckRun::class,
+            'listeners' => [],
+        ],
+        'check_suite' => [
+            'event' => Events\CheckSuite::class,
+            'listeners' => [],
+        ],
+        'code_scanning_alert' => [
+            'event' => Events\CodeScanningAlert::class,
+            'listeners' => [],
+        ],
+        'commit_comment' => [
+            'event' => Events\CommitComment::class,
+            'listeners' => [],
+        ],
+        'create' => [
+            'event' => Events\Create::class,
+            'listeners' => [],
+        ],
+        'custom_property' => [
+            'event' => Events\CustomProperty::class,
+            'listeners' => [],
+        ],
+        'custom_property_values' => [
+            'event' => Events\CustomPropertyValues::class,
+            'listeners' => [],
+        ],
+        'delete' => [
+            'event' => Events\Delete::class,
+            'listeners' => [],
+        ],
+        'dependabot_alert' => [
+            'event' => Events\DependabotAlert::class,
+            'listeners' => [],
+        ],
+        'deploy_key' => [
+            'event' => Events\DeployKey::class,
+            'listeners' => [],
+        ],
+        'deployment' => [
+            'event' => Events\Deployment::class,
+            'listeners' => [],
+        ],
+        'deployment_protection_rule' => [
+            'event' => Events\DeploymentProtectionRule::class,
+            'listeners' => [],
+        ],
+        'deployment_review' => [
+            'event' => Events\DeploymentReview::class,
+            'listeners' => [],
+        ],
+        'deployment_status' => [
+            'event' => Events\DeploymentStatus::class,
+            'listeners' => [],
+        ],
+        'discussion' => [
+            'event' => Events\Discussion::class,
+            'listeners' => [],
+        ],
+        'discussion_comment' => [
+            'event' => Events\DiscussionComment::class,
+            'listeners' => [],
+        ],
+        'fork' => [
+            'event' => Events\Fork::class,
+            'listeners' => [],
+        ],
+        'github_app_authorization' => [
+            'event' => Events\GithubAppAuthorization::class,
+            'listeners' => [],
+        ],
+        'gollum' => [
+            'event' => Events\Gollum::class,
+            'listeners' => [],
+        ],
+        'installation' => [
+            'event' => Events\Installation::class,
+            'listeners' => [],
+        ],
+        'installation_repositories' => [
+            'event' => Events\InstallationRepositories::class,
+            'listeners' => [],
+        ],
+        'installation_target' => [
+            'event' => Events\InstallationTarget::class,
+            'listeners' => [],
+        ],
+        'issue_comment' => [
+            'event' => Events\IssueComment::class,
+            'listeners' => [],
+        ],
+        'issues' => [
+            'event' => Events\Issues::class,
+            'listeners' => [],
+        ],
+        'label' => [
+            'event' => Events\Label::class,
+            'listeners' => [],
+        ],
+        'marketplace_purchase' => [
+            'event' => Events\MarketplacePurchase::class,
+            'listeners' => [],
+        ],
+        'member' => [
+            'event' => Events\Member::class,
+            'listeners' => [],
+        ],
+        'membership' => [
+            'event' => Events\Membership::class,
+            'listeners' => [],
+        ],
+        'merge_group' => [
+            'event' => Events\MergeGroup::class,
+            'listeners' => [],
+        ],
+        'meta' => [
+            'event' => Events\Meta::class,
+            'listeners' => [],
+        ],
+        'milestone' => [
+            'event' => Events\Milestone::class,
+            'listeners' => [],
+        ],
+        'org_block' => [
+            'event' => Events\OrgBlock::class,
+            'listeners' => [],
+        ],
+        'organization' => [
+            'event' => Events\Organization::class,
+            'listeners' => [],
+        ],
+        'package' => [
+            'event' => Events\Package::class,
+            'listeners' => [],
+        ],
+        'page_build' => [
+            'event' => Events\PageBuild::class,
+            'listeners' => [],
+        ],
+        'personal_access_token_request' => [
+            'event' => Events\PersonalAccessTokenRequest::class,
+            'listeners' => [],
+        ],
+        'ping' => [
+            'event' => Events\Ping::class,
+            'listeners' => [],
+        ],
+        'project' => [
+            'event' => Events\Project::class,
+            'listeners' => [],
+        ],
+        'project_card' => [
+            'event' => Events\ProjectCard::class,
+            'listeners' => [],
+        ],
+        'project_column' => [
+            'event' => Events\ProjectColumn::class,
+            'listeners' => [],
+        ],
+        'projects_v2' => [
+            'event' => Events\ProjectsV2::class,
+            'listeners' => [],
+        ],
+        'projects_v2_item' => [
+            'event' => Events\ProjectsV2Item::class,
+            'listeners' => [],
+        ],
+        'projects_v2_status_update' => [
+            'event' => Events\ProjectsV2StatusUpdate::class,
+            'listeners' => [],
+        ],
+        'public' => [
+            'event' => Events\PublicEvent::class,
+            'listeners' => [],
+        ],
+        'pull_request' => [
+            'event' => Events\PullRequest::class,
+            'listeners' => [],
+        ],
+        'pull_request_review' => [
+            'event' => Events\PullRequestReview::class,
+            'listeners' => [],
+        ],
+        'pull_request_review_comment' => [
+            'event' => Events\PullRequestReviewComment::class,
+            'listeners' => [],
+        ],
+        'pull_request_review_thread' => [
+            'event' => Events\PullRequestReviewThread::class,
+            'listeners' => [],
+        ],
+        'push' => [
+            'event' => Events\Push::class,
+            'listeners' => [],
+        ],
+        'registry_package' => [
+            'event' => Events\RegistryPackage::class,
+            'listeners' => [],
+        ],
+        'release' => [
+            'event' => Events\Release::class,
+            'listeners' => [],
+        ],
+        'repository' => [
+            'event' => Events\Repository::class,
+            'listeners' => [],
+        ],
+        'repository_advisory' => [
+            'event' => Events\RepositoryAdvisory::class,
+            'listeners' => [],
+        ],
+        'repository_dispatch' => [
+            'event' => Events\RepositoryDispatch::class,
+            'listeners' => [],
+        ],
+        'repository_import' => [
+            'event' => Events\RepositoryImport::class,
+            'listeners' => [],
+        ],
+        'repository_ruleset' => [
+            'event' => Events\RepositoryRuleset::class,
+            'listeners' => [],
+        ],
+        'repository_vulnerability_alert' => [
+            'event' => Events\RepositoryVulnerabilityAlert::class,
+            'listeners' => [],
+        ],
+        'secret_scanning_alert' => [
+            'event' => Events\SecretScanningAlert::class,
+            'listeners' => [],
+        ],
+        'secret_scanning_alert_location' => [
+            'event' => Events\SecretScanningAlertLocation::class,
+            'listeners' => [],
+        ],
+        'security_advisory' => [
+            'event' => Events\SecurityAdvisory::class,
+            'listeners' => [],
+        ],
+        'security_and_analysis' => [
+            'event' => Events\SecurityAndAnalysis::class,
+            'listeners' => [],
+        ],
+        'sponsorship' => [
+            'event' => Events\Sponsorship::class,
+            'listeners' => [],
+        ],
+        'star' => [
+            'event' => Events\Star::class,
+            'listeners' => [],
+        ],
+        'status' => [
+            'event' => Events\Status::class,
+            'listeners' => [],
+        ],
+        'sub_issues' => [
+            'event' => Events\SubIssues::class,
+            'listeners' => [],
+        ],
+        'team' => [
+            'event' => Events\Team::class,
+            'listeners' => [],
+        ],
+        'team_add' => [
+            'event' => Events\TeamAdd::class,
+            'listeners' => [],
+        ],
+        'watch' => [
+            'event' => Events\Watch::class,
+            'listeners' => [],
+        ],
+        'workflow_dispatch' => [
+            'event' => Events\WorkflowDispatch::class,
+            'listeners' => [],
+        ],
+        'workflow_job' => [
+            'event' => Events\WorkflowJob::class,
+            'listeners' => [],
+        ],
+        'workflow_run' => [
+            'event' => Events\WorkflowRun::class,
+            'listeners' => [],
+        ],
+        'generic' => [
+            'event' => Events\Generic::class,
+            'listeners' => [],
+        ],
+    ],
+
+    'cache' => [
+        'enabled' => env('GITHOOK_CACHE_ENABLED', false),
+        'key' => env('GITHOOK_CACHE_KEY', 'githook'),
+        'ttl' => env('GITHOOK_CACHE_TTL', 60),
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Github WebHook Listeners
+    | Listener for all events
     |--------------------------------------------------------------------------
     |
-    | Its not mandatory to register listeners here, you can register listeners  
-    | in your EventServiceProvider. 
+    | This listener will be called for all events.
     |
     */
-    'listen' => [
-//        CommitComment::class => [
-//            \App\Listeners\CommitCommentListener::class,
-//        ],
+    '*' => [
+
     ],
 ];

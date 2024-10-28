@@ -4,8 +4,8 @@ namespace Digitlimit\Githook\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Digitlimit\Githook\Events\NoPayload;
 use Digitlimit\Githook\Githook;
+use Digitlimit\Githook\Helper;
 
 //X-GitHub-Hook-ID: The unique identifier of the webhook.
 //X-GitHub-Event: The name of the event that triggered the delivery.
@@ -19,58 +19,17 @@ use Digitlimit\Githook\Githook;
 class GithookController extends Controller
 {
     /**
-     * Perform the git hook.
+     * Handle incoming webhook request.
      *
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
-        if (! $request->has('payload')) {
-            NoPayload::dispatch($request->all());
-            return;
-        }
-
-        // get payload
-        $payload = json_decode($request->payload);
-        $event = $request->header('X-GitHub-Event');
-        $signature = $request->header('X-Hub-Signature');
-        $secret = config('githook.secret');
-
-        $githook = new Githook($event, $payload, $signature, $secret);
-
-        if (! $githook->verify()) {
-            return response('Unauthorized', 401);
-        }
-
-        $githook->handle();
-
-        //    }
-//    {
-//        $github_hash = request()->header('X-Hub-Signature');
-//        $secret = config('githook.secret');
-//        $payload = request()->getContent();
-//
-//        $local_hash = 'sha1='.hash_hmac('sha1', $payload, $secret, false);
-//
-//        return hash_equals($github_hash, $local_hash);
-
-        event(new Webhook($payload, $event));
-    }
-
-    /**
-     * Check authentication
-     *
-     * @param [type] $payload
-     * @return void
-     */
-    protected function authCheck()
-    {
-        $github_hash = request()->header('X-Hub-Signature');
-        $secret = config('githook.secret');
-        $payload = request()->getContent();
-
-        $local_hash = 'sha1='.hash_hmac('sha1', $payload, $secret, false);
-
-        return hash_equals($github_hash, $local_hash);
+        $event = $headers->get('X-GitHub-Event');
+        $payload = $request->all();
+        $headers = $request->headers;
+     
+        $event = Helper::event($event, $payload, $headers);
     }
 }
