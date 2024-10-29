@@ -9,40 +9,45 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Symfony\Component\HttpFoundation\HeaderBag;
 
 class AbstractEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public function __construct(
+        public array $payload,
+        public HeaderBag $headers
+    ){
+    }
+
     /**
-     * The type of event
+     * Get the event type
+     *
+     * @return string
      */
-    public string $type = '';
-
-    public function setType(string $type): void
+    public function event(): string
     {
-        $this->type = $type;
+        return $this->headers->get('X-GitHub-Event');
     }
 
-    public function type(): string
-    {
-        return $this->type;
-    }
-
-    public function payload(): object
+    /**
+     * Get the event payload
+     *
+     * @return array
+     */
+    public function payload(): array
     {
         return $this->payload;
     }
 
-//    /**
-//     * Get the channels the event should broadcast on.
-//     *
-//     * @return array<int, \Illuminate\Broadcasting\Channel>
-//     */
-//    public function broadcastOn(): array
-//    {
-//        return [
-//            new PrivateChannel('channel-name'),
-//        ];
-//    }
+    /**
+     * Get the event type
+     *
+     * @return string
+     */
+    public function headers(): HeaderBag
+    {
+        return $this->headers;
+    }
 }

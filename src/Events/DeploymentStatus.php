@@ -10,14 +10,4 @@ class DeploymentStatus extends AbstractEvent
      * The type of event
      */
     public string $type = 'deployment_status';
-
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct(
-        public readonly object $payload
-    ){
-    }
 }

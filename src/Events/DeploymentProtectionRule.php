@@ -10,14 +10,4 @@ class DeploymentProtectionRule extends AbstractEvent
      * The type of event
      */
     public string $type = 'deployment_protection_rule';
-
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct(
-        public readonly object $payload
-    ){
-    }
 }

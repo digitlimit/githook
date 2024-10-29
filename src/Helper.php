@@ -2,6 +2,9 @@
 
 namespace Digitlimit\Githook;
 
+use Digitlimit\Githook\AbstractEvent;
+use Symfony\Component\HttpFoundation\HeaderBag;
+
 /**
  * Class Helper
  * @package Digitlimit\Githook
@@ -36,20 +39,17 @@ class Helper
      *
      * @param string $event
      * @param array $payload
-     * @param array $headers
+     * @param HeaderBag $headers
      * @return string|null
      */
-    public static function event(
-        string $event,
-        array $payload,
-        array $headers
-    ): ?string {
-        $class = config('githook.events')[$event] ?? null;
+    public static function event(string $event, array $payload, HeaderBag $headers): ?AbstractEvent
+    {
+        $class = config('githook.events')[$event]['event'] ?? null;
 
         if(! $class || ! class_exists($class)) {
             return null;
         }
 
-        return new $class($event, $payload, $headers);
+        return new $class($payload, $headers);
     }
 }

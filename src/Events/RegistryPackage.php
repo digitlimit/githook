@@ -10,14 +10,4 @@ class RegistryPackage extends AbstractEvent
      * The type of event
      */
     public string $type = 'registry_package';
-
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct(
-        public readonly object $payload
-    ){
-    }
 }
