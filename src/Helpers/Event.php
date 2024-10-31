@@ -2,6 +2,9 @@
 
 namespace Digitlimit\Githook\Helpers;
 
+use Digitlimit\Githook\AbstractEvent;
+use Symfony\Component\HttpFoundation\HeaderBag;
+
 class Event
 {
     /**
@@ -13,8 +16,8 @@ class Event
      * @return AbstractEvent
      */
     public static function make(
-        string $eventClass, 
-        array $content, 
+        string $eventClass,
+        array $content,
         HeaderBag $headers
     ): AbstractEvent {
         return new $eventClass($content, $headers);

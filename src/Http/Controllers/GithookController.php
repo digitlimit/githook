@@ -25,7 +25,7 @@ class GithookController
         $headers = $request->headers;
         $githubEvent = $headers->get('X-GitHub-Event');
 
-        if(Helper::isDebugging()) {
+        if(Config::isDebugging()) {
             info('Githook event: ' . $githubEvent);
             info('Headers: ', $headers->all());
             info('Content: ', $request->all());
