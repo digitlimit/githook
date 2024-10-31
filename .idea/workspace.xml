@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/GithookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/GithookController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,7 @@
       <workItem from="1729515859077" duration="6724000" />
       <workItem from="1729545269798" duration="5153000" />
       <workItem from="1729628907756" duration="918000" />
-      <workItem from="1730319165939" duration="1191000" />
+      <workItem from="1730319165939" duration="1337000" />
     </task>
     <servers />
   </component>

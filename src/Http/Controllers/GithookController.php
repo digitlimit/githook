@@ -7,7 +7,6 @@ use Digitlimit\Githook\Helpers\Config;
 use Digitlimit\Githook\Helpers\Event;
 use Illuminate\Http\Request;
 use Digitlimit\Githook\Githook;
-use Digitlimit\Githook\Helper;
 use Symfony\Component\HttpFoundation\HeaderBag;
 
 /**
