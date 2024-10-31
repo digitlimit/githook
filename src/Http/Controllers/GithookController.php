@@ -2,7 +2,6 @@
 
 namespace Digitlimit\Githook\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Digitlimit\Githook\Helpers\Config;
 use Digitlimit\Githook\Helpers\Event;
 use Illuminate\Http\Request;
@@ -13,7 +12,7 @@ use Symfony\Component\HttpFoundation\HeaderBag;
  * Class GithookController
  * @package Digitlimit\Githook\Http\Controllers
  */
-class GithookController extends Controller
+class GithookController
 {
     /**
      * Handle incoming webhook request.
