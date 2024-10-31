@@ -2,10 +2,12 @@
 
 namespace Digitlimit\Githook\Http\Middleware;
 
+use Digitlimit\Githook\Helpers\Signature;
+use Digitlimit\Githook\Helpers\Config;
+
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Digitlimit\Githook\Helper;
 
 class VerifySignatureMiddleware
 {
@@ -16,11 +18,11 @@ class VerifySignatureMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $secret = config('githook.secret');
+        $secret = Config::secret();
         $signature = $request->header('X-Hub-Signature');
         $payload = $request->getContent();
 
-        if (! Helper::verifySignature($payload, $signature, $secret)) {
+        if (! Signature::verify($payload, $signature, $secret)) {
             info('Github signature does not match');
             return response('Unauthorized', 401);
         }

@@ -1,9 +1,23 @@
 <?php
 
 use Digitlimit\Githook\Events;
-use Digitlimit\Githook\Http\Middleware;
+use Digitlimit\Githook\Http\Middleware\VerifySignatureMiddleware;
+use DigitLimit\Githook\Http\Controllers\GithookController;
+
+use App\Listeners\CommitCommentListener;
+use App\Listeners\GenericListener;
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | Dump the webhook payload to the log.
+    |
+    */
+
+    'debug' => env('GITHOOK_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,13 +43,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Github WebHook Middleware
+    | Github WebHook Callback Controller
+    |--------------------------------------------------------------------------
+    |
+    | The controller to be called when the webhook is triggered.
+    | This controller will dispatch the event.
+    |
+    */
+    'controller' => GithookController::class,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Github WebHook Callback Middleware
     |--------------------------------------------------------------------------
     |
     | The middleware to be applied to the webhook route.
+    | This middleware will validate the webhook signature.
     |
     */
-    'middleware' => Middleware\VerifySignatureMiddleware::class,
+    'middleware' => VerifySignatureMiddleware::class,
 
     /*
      |--------------------------------------------------------------------------
@@ -304,7 +330,9 @@ return [
         ],
         'star' => [
             'event' => Events\Star::class,
-            'listeners' => [],
+            'listeners' => [
+                CommitCommentListener::class,
+            ],
         ],
         'status' => [
             'event' => Events\Status::class,
@@ -359,6 +387,6 @@ return [
     |
     */
     '*' => [
-
+        GenericListener::class,
     ],
 ];

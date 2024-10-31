@@ -3,6 +3,8 @@
 namespace Digitlimit\Githook\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Digitlimit\Githook\Helpers\Config;
+use Digitlimit\Githook\Helpers\Event;
 use Illuminate\Http\Request;
 use Digitlimit\Githook\Githook;
 use Digitlimit\Githook\Helper;
@@ -25,17 +27,25 @@ class GithookController extends Controller
         $headers = $request->headers;
         $githubEvent = $headers->get('X-GitHub-Event');
 
-        $event = Helper::event(
-            $githubEvent,
-            $request->all(),
-            $headers
-        );
+        if(Helper::isDebugging()) {
+            info('Githook event: ' . $githubEvent);
+            info('Headers: ', $headers->all());
+            info('Content: ', $request->all());
+        }
 
-        if(! $event) {
-            info('Event not found in config file' . $githubEvent);
+        // Get the event class
+        $eventClass = Config::eventClass($githubEvent);
+
+        // If the event class is not found, return
+        if(! $eventClass) {
+            info('Event class not found in config file' . $githubEvent);
             return;
         }
 
+        // Make the event
+        $event = Event::make($eventClass, $request->all(), $headers);
+
+        // Dispatch the event
         event($event);
     }
 }

@@ -16,7 +16,7 @@ class AbstractEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public function __construct(
-        public array $payload,
+        public array $content,
         public HeaderBag $headers
     ){
     }
@@ -32,13 +32,13 @@ class AbstractEvent
     }
 
     /**
-     * Get the event payload
+     * Get the event content
      *
      * @return array
      */
-    public function payload(): array
+    public function content(): array
     {
-        return $this->payload;
+        return $this->content;
     }
 
     /**
@@ -49,5 +49,15 @@ class AbstractEvent
     public function headers(): HeaderBag
     {
         return $this->headers;
+    }
+
+    /**
+     * Get the event type
+     *
+     * @return string
+     */
+    public function __get($name)
+    {
+        return $this->content[$name] ?? null;
     }
 }
