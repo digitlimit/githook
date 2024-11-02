@@ -37,4 +37,18 @@ class Config
         return config('githook.debug');
     }
 
+    public static function middleware(): string
+    {
+        return config('githook.middleware');
+    }
+
+    public static function controller(): string
+    {
+        return config('githook.controller');
+    }
+
+    public static function url(): string
+    {
+        return config('githook.url');
+    }
 }

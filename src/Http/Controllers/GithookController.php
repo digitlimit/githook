@@ -18,7 +18,7 @@ class GithookController
      * Handle incoming webhook request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function __invoke(Request $request)
     {
@@ -37,7 +37,7 @@ class GithookController
         // If the event class is not found, return
         if(! $eventClass) {
             info('Event class not found in config file' . $githubEvent);
-            return;
+            return response()->json(['message' => 'Event not found'], 404);
         }
 
         // Make the event
@@ -45,5 +45,7 @@ class GithookController
 
         // Dispatch the event
         event($event);
+
+        return response()->json(['message' => 'Event received']);
     }
 }

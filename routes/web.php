@@ -1,6 +1,6 @@
 <?php
 
-use DigitLimit\Githook\Http\Controllers\GithookController;
+use Digitlimit\Githook\Helpers\Config;
 
 /**
  |--------------------------------------------------------------------------
@@ -9,6 +9,6 @@ use DigitLimit\Githook\Http\Controllers\GithookController;
  */
 
 if(config('githook.url')) {
-    Route::post(config('githook.url'), config('githook.controller'))
-        ->middleware(config('githook.middleware'));
+    Route::post(Config::url(), Config::controller())
+        ->middleware(Config::middleware());
 }

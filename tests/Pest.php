@@ -1,5 +1,6 @@
 <?php
 
+use Digitlimit\Githook\Tests\TestCase;
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +12,7 @@
 |
 */
 
-// uses(Tests\TestCase::class)->in('Feature');
+ uses(TestCase::class)->in('Feature', 'Unit');
 
 /*
 |--------------------------------------------------------------------------
