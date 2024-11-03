@@ -10,7 +10,7 @@ class Event
     /**
      * Get the event class
      *
-     * @param string $event
+     * @param string $eventClass
      * @param array $content
      * @param HeaderBag $headers
      * @return AbstractEvent
