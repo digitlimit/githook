@@ -2,7 +2,7 @@
 
 use Digitlimit\Githook\Events;
 use Digitlimit\Githook\Http\Middleware\VerifySignatureMiddleware;
-use DigitLimit\Githook\Http\Controllers\GithookController;
+use Digitlimit\Githook\Http\Controllers\GithookController;
 
 use App\Listeners\CommitCommentListener;
 use App\Listeners\GenericListener;
