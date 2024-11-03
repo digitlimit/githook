@@ -3,14 +3,31 @@
 namespace Digitlimit\Githook\Tests;
 
 use Digitlimit\Githook\GithookServiceProvider;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Illuminate\Support\Facades\Facade;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Illuminate\Contracts\Config\Repository;
 
 class TestCase extends BaseTestCase
 {
     use InteractsWithViews;
 
-    protected function getPackageProviders($app)
+    /**
+     * Define environment setup.
+     *
+     * @param Application $app
+     * @return void
+     */
+    protected function defineEnvironment($app): void
+    {
+        // Setup default database to use sqlite :memory:
+        tap($app['config'], function (Repository $config) {
+//            $config->set('database.default', 'testbench');
+        });
+    }
+
+    protected function getPackageProviders($app): array
     {
         return [
             GithookServiceProvider::class,
@@ -20,11 +37,11 @@ class TestCase extends BaseTestCase
     /**
      * Override application aliases.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      *
-     * @return array<string, class-string<\Illuminate\Support\Facades\Facade>>
+     * @return array<string, class-string<Facade>>
      */
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
         return [
 
@@ -36,7 +53,7 @@ class TestCase extends BaseTestCase
         // perform environment setup
     }
 
-    public function packagePath(string $path = '')
+    public function packagePath(string $path = ''): string
     {
         return __DIR__ . '/../' . $path;
     }

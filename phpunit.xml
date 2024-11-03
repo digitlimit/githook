@@ -15,4 +15,8 @@
             <directory suffix=".php">./src</directory>
         </include>
     </source>
+    <php>
+        <env name="GITHOOK_SECRET" value="secret"/>
+        <env name="GITHOOK_DEBUG" value="false"/>
+    </php>
 </phpunit>
