@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Middleware/VerifySignatureMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Middleware/VerifySignatureMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/Http/Controllers/GithookControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Http/Controllers/GithookControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/pestphp/pest/.temp/test-results" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/pestphp/pest/.temp/test-results" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -217,7 +214,7 @@
       <workItem from="1730319165939" duration="2289000" />
       <workItem from="1730411085731" duration="5235000" />
       <workItem from="1730497378542" duration="3811000" />
-      <workItem from="1730552179602" duration="17617000" />
+      <workItem from="1730552179602" duration="20208000" />
     </task>
     <servers />
   </component>

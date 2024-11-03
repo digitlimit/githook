@@ -16,16 +16,6 @@ it('handles a GitHub webhook event', function ()
     // Set the GitHub event header
     $request->headers->set('X-GitHub-Event', 'star');
 
-    // Create a partial mock for the Config class
-    Mockery::spy(Config::class)
-        ->shouldReceive('isDebugging')
-        ->andReturn(true)
-        ->getMock()
-        ->shouldReceive('eventClass')
-        ->with('star')
-        ->andReturn(config('githook.events')['star']['event'])
-        ->getMock();
-
     // Spy on the event dispatch
     Event::fake();
 
@@ -57,16 +47,6 @@ it('returns a 404 response if the event class is not found', function ()
     // Set the GitHub event header
     $request->headers->set('X-GitHub-Event', 'invalid-event');
 
-    // Create a partial mock for the Config class
-    Mockery::spy(Config::class)
-        ->shouldReceive('isDebugging')
-        ->andReturn(true)
-        ->getMock()
-        ->shouldReceive('eventClass')
-        ->with('star')
-        ->andReturn(null)
-        ->getMock();
-
     // Call the controller
     $controller = new GithookController();
     $response = $controller($request);
@@ -76,7 +56,5 @@ it('returns a 404 response if the event class is not found', function ()
         ->toBe(404)
         ->and($response->getContent())
         ->toBe('{"message":"Event not found"}');
-
-    // Clean up Mockery
-    Mockery::close();
 });
+
