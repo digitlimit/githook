@@ -57,4 +57,3 @@ it('returns a 404 response if the event class is not found', function ()
         ->and($response->getContent())
         ->toBe('{"message":"Event not found"}');
 });
-
