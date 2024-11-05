@@ -4,9 +4,6 @@ use Digitlimit\Githook\Events;
 use Digitlimit\Githook\Http\Middleware\VerifySignatureMiddleware;
 use Digitlimit\Githook\Http\Controllers\GithookController;
 
-use App\Listeners\CommitCommentListener;
-use App\Listeners\GenericListener;
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -330,9 +327,7 @@ return [
         ],
         'star' => [
             'event' => Events\Star::class,
-            'listeners' => [
-                CommitCommentListener::class,
-            ],
+            'listeners' => [],
         ],
         'status' => [
             'event' => Events\Status::class,
@@ -387,6 +382,6 @@ return [
     |
     */
     '*' => [
-        GenericListener::class,
+
     ],
 ];

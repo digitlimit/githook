@@ -4,9 +4,8 @@ namespace Digitlimit\Githook\Http\Controllers;
 
 use Digitlimit\Githook\Helpers\Config;
 use Digitlimit\Githook\Helpers\Event;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Digitlimit\Githook\Githook;
-use Symfony\Component\HttpFoundation\HeaderBag;
 
 /**
  * Class GithookController
@@ -17,8 +16,8 @@ class GithookController
     /**
      * Handle incoming webhook request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @return JsonResponse
      */
     public function __invoke(Request $request)
     {

@@ -1,6 +1,7 @@
 <?php
 
 use Digitlimit\Githook\Helpers\Config;
+use Illuminate\Support\Facades\Route;
 
 /**
  |--------------------------------------------------------------------------
