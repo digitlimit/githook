@@ -42,7 +42,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    protected function buildEventListenerMappings()
+    public function buildEventListenerMappings(): array
     {
         $mappings = [];
         $githookEvents = config('githook.events', []);

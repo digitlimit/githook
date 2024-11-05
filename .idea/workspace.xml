@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Helpers/ConfigTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Helpers/ConfigTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Providers/EventServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/pestphp/pest/.temp/test-results" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/pestphp/pest/.temp/test-results" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +214,7 @@
       <workItem from="1730319165939" duration="2289000" />
       <workItem from="1730411085731" duration="5235000" />
       <workItem from="1730497378542" duration="3811000" />
-      <workItem from="1730552179602" duration="25267000" />
+      <workItem from="1730552179602" duration="34700000" />
     </task>
     <servers />
   </component>
