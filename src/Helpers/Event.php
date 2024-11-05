@@ -9,11 +9,6 @@ class Event
 {
     /**
      * Get the event class
-     *
-     * @param string $eventClass
-     * @param array $content
-     * @param HeaderBag $headers
-     * @return AbstractEvent
      */
     public static function make(
         string $eventClass,

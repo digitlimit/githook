@@ -3,7 +3,7 @@
         'name' => 'digitlimit/githook',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '546ee9438675141ca9d9ec9f424751c0694f8e10',
+        'reference' => '8135a94a1232e1a716c13bd8570dece5b15bdb4c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -70,7 +70,7 @@
         'digitlimit/githook' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '546ee9438675141ca9d9ec9f424751c0694f8e10',
+            'reference' => '8135a94a1232e1a716c13bd8570dece5b15bdb4c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

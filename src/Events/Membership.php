@@ -9,5 +9,5 @@ class Membership extends AbstractEvent
     /**
      * The type of event
      */
-    public string $type = 'membership'
+    public string $type = 'membership';
 }

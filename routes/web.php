@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Route;
  | Page Routes
  |--------------------------------------------------------------------------
  */
-
-if(config('githook.url')) {
+if (config('githook.url')) {
     Route::post(Config::url(), Config::controller())
         ->middleware(Config::middleware());
 }

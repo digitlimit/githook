@@ -39,8 +39,6 @@ class EventServiceProvider extends ServiceProvider
 
     /**
      * Build event-listener mappings from configuration.
-     *
-     * @return array
      */
     public function buildEventListenerMappings(): array
     {

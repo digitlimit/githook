@@ -2,11 +2,7 @@
 
 namespace Digitlimit\Githook;
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\HttpFoundation\HeaderBag;
@@ -18,13 +14,10 @@ class AbstractEvent
     public function __construct(
         public array $content,
         public HeaderBag $headers
-    ){
-    }
+    ) {}
 
     /**
      * Get the event type
-     *
-     * @return string
      */
     public function event(): string
     {
@@ -33,8 +26,6 @@ class AbstractEvent
 
     /**
      * Get the event content
-     *
-     * @return array
      */
     public function content(): array
     {

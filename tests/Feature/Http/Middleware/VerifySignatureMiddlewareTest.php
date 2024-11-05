@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @runInSeparateProcess
+ *
  * @preserveGlobalState disabled
  */
-it('handles a valid signature', function ()
-{
+it('handles a valid signature', function () {
     $secret = 'secret';
     $content = ['action' => 'star'];
-    $signature = 'sha1=' . hash_hmac('sha1', json_encode($content), $secret);
+    $signature = 'sha1='.hash_hmac('sha1', json_encode($content), $secret);
 
     beforeEach(function () {
         // Close Mockery after each test to avoid conflicts
@@ -38,7 +38,7 @@ it('handles a valid signature', function ()
     $request->headers->set('X-Hub-Signature', $signature);
 
     // Create the middleware instance
-    $middleware = new VerifySignatureMiddleware();
+    $middleware = new VerifySignatureMiddleware;
 
     // Create a closure to represent the next middleware
     $next = function ($req) {

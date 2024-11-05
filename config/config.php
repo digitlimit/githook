@@ -1,8 +1,8 @@
 <?php
 
 use Digitlimit\Githook\Events;
-use Digitlimit\Githook\Http\Middleware\VerifySignatureMiddleware;
 use Digitlimit\Githook\Http\Controllers\GithookController;
+use Digitlimit\Githook\Http\Middleware\VerifySignatureMiddleware;
 
 return [
     /*

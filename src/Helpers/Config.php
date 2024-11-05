@@ -14,15 +14,12 @@ class Config
 
     /**
      * Get the event class
-     *
-     * @param string $event
-     * @return string|null
      */
     public static function eventClass(string $event): ?string
     {
         $class = config('githook.events')[$event]['event'] ?? null;
 
-        if(! $class || ! class_exists($class)) {
+        if (! $class || ! class_exists($class)) {
             return null;
         }
 

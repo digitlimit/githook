@@ -10,12 +10,12 @@ beforeEach(function () {
     Config::set('githook.events', [
         [
             'event' => 'App\Events\SomeEvent',
-            'listeners' => ['App\Listeners\SomeListener']
-        ]
+            'listeners' => ['App\Listeners\SomeListener'],
+        ],
     ]);
 
     Config::set('githook.*', [
-        'App\Listeners\GlobalListener'
+        'App\Listeners\GlobalListener',
     ]);
 
     // Mock the refreshEventDispatcher method
@@ -30,8 +30,7 @@ beforeEach(function () {
     ]);
 });
 
-it('registers event listeners with caching enabled', function ()
-{
+it('registers event listeners with caching enabled', function () {
     // Mock the configuration to disable caching
     Cache::shouldReceive('remember')
         ->once()
@@ -54,8 +53,7 @@ it('registers event listeners with caching enabled', function ()
     Event::assertListening('App\Events\SomeEvent', 'App\Listeners\GlobalListener');
 })->group('ServiceProvider');
 
-it('builds event listener mappings without caching', function ()
-{
+it('builds event listener mappings without caching', function () {
     // Mock the configuration to disable caching
     Cache::shouldReceive('remember')
         ->never()
