@@ -2,11 +2,11 @@
 
 namespace Digitlimit\Githook\Notifications;
 
+use Digitlimit\Githook\EventInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Slack\BlockKit\Blocks\ContextBlock;
-use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 use Illuminate\Notifications\Slack\SlackMessage;
 
 class Slack extends Notification implements ShouldQueue
@@ -16,9 +16,9 @@ class Slack extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public EventInterface $event
+    ){
     }
 
     /**
@@ -37,19 +37,10 @@ class Slack extends Notification implements ShouldQueue
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage)
-            ->text('One of your invoices has been paid!')
-            ->headerBlock('Invoice Paid')
+            ->text('Webhook event received: ' . $this->event->event())
+            ->headerBlock('Webhook Event Received')
             ->contextBlock(function (ContextBlock $block) {
-                $block->text('Customer #1234');
-            })
-            ->sectionBlock(function (SectionBlock $block) {
-                $block->text('An invoice has been paid.');
-                $block->field("*Invoice No:*\n1000")->markdown();
-                $block->field("*Invoice Recipient:*\ntaylor@laravel.com")->markdown();
-            })
-            ->dividerBlock()
-            ->sectionBlock(function (SectionBlock $block) {
-                $block->text('Congratulations!');
+                $block->text('Content: ' . json_encode($this->event->content()));
             });
     }
 
@@ -61,7 +52,8 @@ class Slack extends Notification implements ShouldQueue
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'event' => $this->event->event(),
+            'content' => $this->event->content()
         ];
     }
 }

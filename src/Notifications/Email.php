@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Digitlimit\Githook\AbstractEvent;
+use Digitlimit\Githook\EventInterface;
 
 class Email extends Notification implements ShouldQueue
 {
@@ -15,9 +15,9 @@ class Email extends Notification implements ShouldQueue
     /**
      * Create a new notification instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public EventInterface $event
+    ){
     }
 
     /**
@@ -36,9 +36,8 @@ class Email extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('Webhook event received: ' . $this->event->event())
+            ->line('Content: ' . json_encode($this->event->content()));
     }
 
     /**
@@ -49,7 +48,8 @@ class Email extends Notification implements ShouldQueue
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'event' => $this->event->event(),
+            'content' => $this->event->content()
         ];
     }
 }
