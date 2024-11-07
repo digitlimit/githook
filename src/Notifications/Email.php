@@ -6,8 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Digitlimit\Githook\AbstractEvent;
 
-class SlackEventReceived extends Notification implements ShouldQueue
+class Email extends Notification implements ShouldQueue
 {
     use Queueable;
 

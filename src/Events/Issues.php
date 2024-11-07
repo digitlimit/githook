@@ -3,8 +3,9 @@
 namespace Digitlimit\Githook\Events;
 
 use Digitlimit\Githook\AbstractEvent;
+use Digitlimit\Githook\EventInterface;
 
-class Issues extends AbstractEvent
+class Issues extends AbstractEvent implements EventInterface
 {
     /**
      * The type of event

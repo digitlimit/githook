@@ -35,7 +35,7 @@ class AbstractEvent
     /**
      * Get the event type
      *
-     * @return string
+     * @return HeaderBag
      */
     public function headers(): HeaderBag
     {
