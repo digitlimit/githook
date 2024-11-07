@@ -22,7 +22,12 @@ class TestCase extends BaseTestCase
     {
         // Setup default database to use sqlite :memory:
         tap($app['config'], function (Repository $config) {
-            //            $config->set('database.default', 'testbench');
+            $config->set('services.slack', [
+                'notifications' => [
+                    'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
+                    'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
+                ],
+            ]);
         });
     }
 

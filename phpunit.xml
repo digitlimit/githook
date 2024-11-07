@@ -18,5 +18,7 @@
     <php>
         <env name="GITHOOK_SECRET" value="secret"/>
         <env name="GITHOOK_DEBUG" value="false"/>
+        <env name="SLACK_BOT_USER_OAUTH_TOKEN" value="false"/>
+        <env name="SLACK_BOT_USER_DEFAULT_CHANNEL" value="false"/>
     </php>
 </phpunit>

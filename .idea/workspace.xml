@@ -5,28 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a859d5f-b3eb-4dd4-98ba-a13fe03fa9ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Events/Membership.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/Membership.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Events/OrgBlock.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Events/OrgBlock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Helpers/Signature.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Helpers/Signature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Controllers/GithookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Controllers/GithookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http/Middleware/VerifySignatureMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Http/Middleware/VerifySignatureMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Helpers/EventTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Helpers/EventTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Helpers/SignatureTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Helpers/SignatureTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Http/Controllers/GithookControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Http/Controllers/GithookControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Http/Middleware/VerifySignatureMiddlewareTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Http/Middleware/VerifySignatureMiddlewareTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/Providers/EventServiceProviderTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/Providers/EventServiceProviderTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Pest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Pest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,6 +168,10 @@
       <path value="$PROJECT_DIR$/vendor/zbateson/mb-wrapper" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
       <path value="$PROJECT_DIR$/vendor/zbateson/mail-mime-parser" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -187,23 +182,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.laravel-idea.update-module-directories&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;2-add-laravel-events&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/embah/projects/githook/tests/Unit/Helpers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.update-module-directories": "true",
+    "git-widget-placeholder": "2-add-laravel-events",
+    "last_opened_file_path": "/Users/embah/projects/githook/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/tests/Unit/Helpers" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -236,7 +232,7 @@
       <workItem from="1730319165939" duration="2289000" />
       <workItem from="1730411085731" duration="5235000" />
       <workItem from="1730497378542" duration="3811000" />
-      <workItem from="1730552179602" duration="36487000" />
+      <workItem from="1730552179602" duration="49817000" />
     </task>
     <servers />
   </component>
