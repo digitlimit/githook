@@ -11,7 +11,7 @@ This package is a simple Laravel Github Webhook helper for handling webhook even
 You can install the package via composer:
 
 ```bash
-composer require digitlimit/githook "dev-develop"
+composer require digitlimit/githook
 ```
 
 Then publish config and mailable
