@@ -2,48 +2,48 @@
 
 namespace Digitlimit\Githook\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Digitlimit\Githook\Events\NoPayload;
-use Digitlimit\Githook\Events\Webhook;
+use Digitlimit\Githook\Helpers\Config;
+use Digitlimit\Githook\Helpers\Event;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class GithookController extends Controller
+/**
+ * Class GithookController
+ */
+class GithookController
 {
     /**
-     * Perform the git hook.
+     * Handle incoming webhook request.
      *
-     * @return void
+     * @return JsonResponse
      */
     public function __invoke(Request $request)
     {
-        if (! $request->has('payload')) {
-            NoPayload::dispatch($request->all());
-            info('No payload received');
+        $headers = $request->headers;
+        $githubEvent = $headers->get('X-GitHub-Event');
 
-            return;
+        if (Config::isDebugging()) {
+            info('Githook event: '.$githubEvent);
+            info('Headers: ', $headers->all());
+            info('Content: ', $request->all());
         }
 
-        // get payload
-        $payload = json_decode($request->payload);
-        $event = $request->header('X-GitHub-Event');
+        // Get the event class
+        $eventClass = Config::eventClass($githubEvent);
 
-        event(new Webhook($payload, $event));
-    }
+        // If the event class is not found, return
+        if (! $eventClass) {
+            info('Event class not found in config file'.$githubEvent);
 
-    /**
-     * Check authentication
-     *
-     * @param [type] $payload
-     * @return void
-     */
-    protected function authCheck()
-    {
-        $github_hash = request()->header('X-Hub-Signature');
-        $secret = config('githook.secret');
-        $payload = request()->getContent();
+            return response()->json(['message' => 'Event not found'], 404);
+        }
 
-        $local_hash = 'sha1='.hash_hmac('sha1', $payload, $secret, false);
+        // Make the event
+        $event = Event::make($eventClass, $request->all(), $headers);
 
-        return hash_equals($github_hash, $local_hash);
+        // Dispatch the event
+        event($event);
+
+        return response()->json(['message' => 'Event received']);
     }
 }

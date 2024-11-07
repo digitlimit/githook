@@ -3,7 +3,18 @@
     "description": "Github Webhook Helper",
     "keywords": [
         "digitlimit",
-        "githook"
+        "githook",
+        "github",
+        "webhook",
+        "laravel",
+        "laravel events",
+        "laravel listeners",
+        "listen for github events",
+        "github events",
+        "github webhook",
+        "github webhook events",
+        "github webhook listener",
+        "laravel github webhook"
     ],
     "homepage": "https://github.com/digitlimit/githook",
     "license": "MIT",
@@ -16,11 +27,14 @@
         }
     ],
     "require": {
-        "php": "^7.0|^8.0"
+        "php": "^8.1",
+        "laravel/slack-notification-channel": "^3.4"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
+        "laravel/pint": "^1.18",
+        "nunomaduro/collision": "^7.5",
+        "orchestra/testbench": "^8.5",
+        "pestphp/pest": "^2.36"
     },
     "autoload": {
         "psr-4": {
@@ -29,16 +43,33 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Digitlimit\\Githook\\Tests\\": "tests"
+            "Digitlimit\\Githook\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare",
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/pint --ansi",
+            "@php vendor/bin/phpstan analyse --verbose --ansi"
+        ],
+        "test": [
+            "@php vendor/bin/pest"
+        ]
     },
     "extra": {
         "laravel": {
@@ -46,8 +77,16 @@
                 "Digitlimit\\Githook\\GithookServiceProvider"
             ],
             "aliases": {
-                "Githook": "Digitlimit\\Githook\\GithookFacade"
+                "Githook": "Digitlimit\\Githook\\Facades\\Githook"
             }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

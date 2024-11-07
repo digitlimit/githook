@@ -1,11 +1,14 @@
 <?php
 
-use DigitLimit\Githook\Http\Controllers\GithookController;
+use Digitlimit\Githook\Helpers\Config;
+use Illuminate\Support\Facades\Route;
 
 /**
  |--------------------------------------------------------------------------
  | Page Routes
  |--------------------------------------------------------------------------
  */
-
- Route::post(config('githook.url'), GithookController::class);
+if (config('githook.url')) {
+    Route::post(Config::url(), Config::controller())
+        ->middleware(Config::middleware());
+}
