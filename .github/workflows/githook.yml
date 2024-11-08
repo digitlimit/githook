@@ -38,9 +38,6 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Show installed packages (for debugging)
-      run: composer show
-
     - name: Run tests
       env:
         DB_CONNECTION: sqlite
