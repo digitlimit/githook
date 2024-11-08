@@ -4,23 +4,170 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/digitlimit/githook.svg?style=flat-square)](https://packagist.org/packages/digitlimit/githook)
 ![GitHub Actions](https://github.com/digitlimit/githook/actions/workflows/main.yml/badge.svg)
 
-This package is a simple Laravel Github Webhook helper for handling webhook events.
+A Laravel package to handle GitHub webhooks seamlessly by dispatching Laravel events for all GitHub events. Users can listen to and handle these events easily.
 
 ## Installation
 
-You can install the package via composer:
+To install the package, use Composer:
 
 ```bash
 composer require digitlimit/githook
 ```
 
-Then publish config
+## Configuration
+Publish Configuration File
+To publish the configuration file, run:
 
 ```bash
 php artisan vendor:publish --provider="Digitlimit\Githook\GithookServiceProvider"
 ```
 
-## Usage
+## Configure Environment Variables
+Add the following environment variables to your .env file:
+
+```
+GITHOOK_SECRET=your-github-webhook-secret
+```
+
+## Available Events
+Here are the events you can subscribe to:
+
+```
+use Digitlimit\Githook\Events\BranchProtectionConfiguration;
+use Digitlimit\Githook\Events\BranchProtectionRule;
+use Digitlimit\Githook\Events\CheckRun;
+use Digitlimit\Githook\Events\CheckSuite;
+use Digitlimit\Githook\Events\CodeScanningAlert;
+use Digitlimit\Githook\Events\CommitComment;
+use Digitlimit\Githook\Events\Create;
+use Digitlimit\Githook\Events\CustomProperty;
+use Digitlimit\Githook\Events\CustomPropertyValues;
+use Digitlimit\Githook\Events\Delete;
+use Digitlimit\Githook\Events\DependabotAlert;
+use Digitlimit\Githook\Events\DeployKey;
+use Digitlimit\Githook\Events\Deployment;
+use Digitlimit\Githook\Events\DeploymentProtectionRule;
+use Digitlimit\Githook\Events\DeploymentReview;
+use Digitlimit\Githook\Events\DeploymentStatus;
+use Digitlimit\Githook\Events\Discussion;
+use Digitlimit\Githook\Events\DiscussionComment;
+use Digitlimit\Githook\Events\Fork;
+use Digitlimit\Githook\Events\GithubAppAuthorization;
+use Digitlimit\Githook\Events\Gollum;
+use Digitlimit\Githook\Events\Installation;
+use Digitlimit\Githook\Events\InstallationRepositories;
+use Digitlimit\Githook\Events\InstallationTarget;
+use Digitlimit\Githook\Events\IssueComment;
+use Digitlimit\Githook\Events\Issues;
+use Digitlimit\Githook\Events\Label;
+use Digitlimit\Githook\Events\MarketplacePurchase;
+use Digitlimit\Githook\Events\Member;
+use Digitlimit\Githook\Events\Membership;
+use Digitlimit\Githook\Events\MergeGroup;
+use Digitlimit\Githook\Events\Meta;
+use Digitlimit\Githook\Events\Milestone;
+use Digitlimit\Githook\Events\OrgBlock;
+use Digitlimit\Githook\Events\Organization;
+use Digitlimit\Githook\Events\Package;
+use Digitlimit\Githook\Events\PageBuild;
+use Digitlimit\Githook\Events\PersonalAccessTokenRequest;
+use Digitlimit\Githook\Events\Ping;
+use Digitlimit\Githook\Events\Project;
+use Digitlimit\Githook\Events\ProjectCard;
+use Digitlimit\Githook\Events\ProjectColumn;
+use Digitlimit\Githook\Events\ProjectsV2;
+use Digitlimit\Githook\Events\ProjectsV2Item;
+use Digitlimit\Githook\Events\ProjectsV2StatusUpdate;
+use Digitlimit\Githook\Events\PublicEvent;
+use Digitlimit\Githook\Events\PullRequest;
+use Digitlimit\Githook\Events\PullRequestReview;
+use Digitlimit\Githook\Events\PullRequestReviewComment;
+use Digitlimit\Githook\Events\PullRequestReviewThread;
+use Digitlimit\Githook\Events\Push;
+use Digitlimit\Githook\Events\RegistryPackage;
+use Digitlimit\Githook\Events\Release;
+use Digitlimit\Githook\Events\Repository;
+use Digitlimit\Githook\Events\RepositoryAdvisory;
+use Digitlimit\Githook\Events\RepositoryDispatch;
+use Digitlimit\Githook\Events\RepositoryImport;
+use Digitlimit\Githook\Events\RepositoryRuleset;
+use Digitlimit\Githook\Events\RepositoryVulnerabilityAlert;
+use Digitlimit\Githook\Events\SecretScanningAlert;
+use Digitlimit\Githook\Events\SecretScanningAlertLocation;
+use Digitlimit\Githook\Events\SecurityAdvisory;
+use Digitlimit\Githook\Events\SecurityAndAnalysis;
+use Digitlimit\Githook\Events\Sponsorship;
+use Digitlimit\Githook\Events\Star;
+use Digitlimit\Githook\Events\Status;
+use Digitlimit\Githook\Events\SubIssues;
+use Digitlimit\Githook\Events\Team;
+use Digitlimit\Githook\Events\TeamAdd;
+use Digitlimit\Githook\Events\Watch;
+use Digitlimit\Githook\Events\WorkflowDispatch;
+use Digitlimit\Githook\Events\WorkflowJob;
+use Digitlimit\Githook\Events\WorkflowRun;
+use Digitlimit\Githook\Events\Generic;
+```
+
+## Subscribing to Events
+You can subscribe to events either in the Laravel Event Service Provider or directly in the configuration file.
+
+## Using Event Service Provider
+To subscribe to events in the Event Service Provider, add the following to your app/Providers/EventServiceProvider.php:
+
+```
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Digitlimit\Githook\Events\CheckRun;
+use App\Listeners\HandleCheckRun;
+
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        CheckRun::class => [
+            HandleCheckRun::class,
+        ],
+    ];
+
+    public function boot()
+    {
+        parent::boot();
+    }
+}
+```
+
+# Using the Configuration File
+Alternatively, you can subscribe to events directly in the configuration file `config/githook.php`:
+```
+return [
+    'events' => [
+        'check_run' => [
+            'event' => Events\CheckRun::class,
+            'listeners' => [
+                \App\Listeners\HandleCheckRun::class,
+            ],
+        ],
+        // Add other event listeners here
+    ],
+];
+```
+
+## Example Listener
+Here is an example listener for the `Star` event:
+```
+namespace App\Listeners;
+
+use Digitlimit\Githook\Events\Star;
+
+class HandleCheckRun
+{
+    public function handle(CheckRun $event)
+    {
+        // Handle the event
+    }
+}
+```
+
+## How to setup webhook in GitHub
 1. Setup Github Webhook if you have not done so.
 https://github.com/your-username/your-repo/settings/hooks
 
