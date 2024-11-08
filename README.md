@@ -140,7 +140,7 @@ Alternatively, you can subscribe to events directly in the configuration file `c
 ```
 return [
     'events' => [
-        'check_run' => [
+        'star' => [
             'event' => Events\Star::class,
             'listeners' => [
                 \App\Listeners\HandleStar::class,
