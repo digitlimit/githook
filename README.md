@@ -117,14 +117,14 @@ To subscribe to events in the Event Service Provider, add the following to your 
 
 ```
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Digitlimit\Githook\Events\CheckRun;
-use App\Listeners\HandleCheckRun;
+use Digitlimit\Githook\Events\Star;
+use App\Listeners\HandleStar;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        CheckRun::class => [
-            HandleCheckRun::class,
+        Star::class => [
+            HandleStar::class,
         ],
     ];
 
@@ -141,13 +141,13 @@ Alternatively, you can subscribe to events directly in the configuration file `c
 return [
     'events' => [
         'check_run' => [
-            'event' => Events\CheckRun::class,
+            'event' => Events\Star::class,
             'listeners' => [
-                \App\Listeners\HandleCheckRun::class,
+                \App\Listeners\HandleStar::class,
             ],
         ],
-        // Add other event listeners here
     ],
+    ...
 ];
 ```
 
@@ -158,9 +158,9 @@ namespace App\Listeners;
 
 use Digitlimit\Githook\Events\Star;
 
-class HandleCheckRun
+class HandleStar
 {
-    public function handle(CheckRun $event)
+    public function handle(Star $event)
     {
         // Handle the event
     }
