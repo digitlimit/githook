@@ -14,18 +14,15 @@ You can install the package via composer:
 composer require digitlimit/githook
 ```
 
-Then publish config and mailable
+Then publish config
 
 ```bash
 php artisan vendor:publish --provider="Digitlimit\Githook\GithookServiceProvider"
 ```
 
 ## Usage
-
-1. Add
-
-1. Setup Github Webhook
-https://github.com/digitlimit/kcc-admin/settings/hooks
+1. Setup Github Webhook if you have not done so.
+https://github.com/your-username/your-repo/settings/hooks
 
 ![image](https://user-images.githubusercontent.com/2041419/137665069-f330f1e5-3907-4e59-a6b3-79c95be40ba0.png)
 
