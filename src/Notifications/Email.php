@@ -2,22 +2,28 @@
 
 namespace Digitlimit\Githook\Notifications;
 
+use Digitlimit\Githook\EventInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Digitlimit\Githook\EventInterface;
 
 class Email extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
+     * The event instance.
+     */
+    public EventInterface $event;
+
+    /**
      * Create a new notification instance.
      */
     public function __construct(
-        public EventInterface $event
-    ){
+        EventInterface $event
+    ) {
+        $this->event = $event;
     }
 
     /**
@@ -36,8 +42,8 @@ class Email extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('Webhook event received: ' . $this->event->event())
-            ->line('Content: ' . json_encode($this->event->content()));
+            ->line('Webhook event received: '.$this->event->event())
+            ->line('Content: '.json_encode($this->event->content()));
     }
 
     /**
@@ -49,7 +55,7 @@ class Email extends Notification implements ShouldQueue
     {
         return [
             'event' => $this->event->event(),
-            'content' => $this->event->content()
+            'content' => $this->event->content(),
         ];
     }
 }

@@ -11,7 +11,7 @@ class GithookServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'githook');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
