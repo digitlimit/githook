@@ -1,6 +1,6 @@
 {
     "name": "digitlimit/githook",
-    "description": "Github Webhook Helper",
+    "description": "A Laravel package to handle GitHub webhooks seamlessly by dispatching Laravel events for all GitHub events. Users can listen to and handle these events easily.",
     "keywords": [
         "digitlimit",
         "githook",
@@ -27,8 +27,7 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "laravel/slack-notification-channel": "^3.4"
+        "php": "^8.1"
     },
     "require-dev": {
         "laravel/pint": "^1.18",
@@ -75,10 +74,7 @@
         "laravel": {
             "providers": [
                 "Digitlimit\\Githook\\GithookServiceProvider"
-            ],
-            "aliases": {
-                "Githook": "Digitlimit\\Githook\\Facades\\Githook"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
