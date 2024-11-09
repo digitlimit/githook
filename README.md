@@ -176,7 +176,8 @@ https://github.com/your-username/your-repo/settings/hooks
 ### Testing
 
 ```bash
-composer test
+composer install
+php vendor/bin/testbench package:test
 ```
 
 ### Changelog
