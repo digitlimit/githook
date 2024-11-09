@@ -4,6 +4,7 @@ namespace Digitlimit\Githook;
 
 use Digitlimit\Githook\Http\Controllers\GithookController;
 use Digitlimit\Githook\Providers\EventServiceProvider;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\ServiceProvider;
 
 class GithookServiceProvider extends ServiceProvider
@@ -13,7 +14,6 @@ class GithookServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'githook');
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         if ($this->app->runningInConsole()) {
@@ -23,8 +23,9 @@ class GithookServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
+     * @throws BindingResolutionException
      */
-    public function register()
+    public function register(): void
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->make(GithookController::class);
@@ -40,9 +41,5 @@ class GithookServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('githook.php'),
         ], 'config');
-
-        $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/githook'),
-        ], 'views');
     }
 }
