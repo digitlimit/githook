@@ -18,8 +18,6 @@ interface EventInterface
 
     /**
      * Get the event type
-     *
-     * @return HeaderBag
      */
     public function headers(): HeaderBag;
 

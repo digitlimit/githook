@@ -11,10 +11,26 @@ class AbstractEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * The event instance.
+     */
+    public array $content;
+
+    /**
+     * The event instance.
+     */
+    public HeaderBag $headers;
+
+    /**
+     * Create a new event instance.
+     */
     public function __construct(
-        public array $content,
-        public HeaderBag $headers
-    ) {}
+        array $content,
+        HeaderBag $headers
+    ) {
+        $this->content = $content;
+        $this->headers = $headers;
+    }
 
     /**
      * Get the event type
@@ -34,8 +50,6 @@ class AbstractEvent
 
     /**
      * Get the event type
-     *
-     * @return HeaderBag
      */
     public function headers(): HeaderBag
     {

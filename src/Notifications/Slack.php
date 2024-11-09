@@ -14,11 +14,17 @@ class Slack extends Notification implements ShouldQueue
     use Queueable;
 
     /**
+     * The event instance.
+     */
+    public EventInterface $event;
+
+    /**
      * Create a new notification instance.
      */
     public function __construct(
-        public EventInterface $event
-    ){
+        EventInterface $event
+    ) {
+        $this->event = $event;
     }
 
     /**
@@ -37,10 +43,10 @@ class Slack extends Notification implements ShouldQueue
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage)
-            ->text('Webhook event received: ' . $this->event->event())
+            ->text('Webhook event received: '.$this->event->event())
             ->headerBlock('Webhook Event Received')
             ->contextBlock(function (ContextBlock $block) {
-                $block->text('Content: ' . json_encode($this->event->content()));
+                $block->text('Content: '.json_encode($this->event->content()));
             });
     }
 
@@ -53,7 +59,7 @@ class Slack extends Notification implements ShouldQueue
     {
         return [
             'event' => $this->event->event(),
-            'content' => $this->event->content()
+            'content' => $this->event->content(),
         ];
     }
 }
