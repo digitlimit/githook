@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/digitlimit/githook.svg?style=flat-square)](https://packagist.org/packages/digitlimit/githook)
 [![Total Downloads](https://img.shields.io/packagist/dt/digitlimit/githook.svg?style=flat-square)](https://packagist.org/packages/digitlimit/githook)
 ![GitHub Actions](https://github.com/digitlimit/githook/actions/workflows/githook.yml/badge.svg)
-![PHP versions](https://img.shields.io/badge/PHP-8.0%20|%208.1%20|%208.2-blue.svg)
+![PHP versions](https://img.shields.io/badge/PHP-8.0%20|%208.2%20|%208.3-blue.svg)
 
 A Laravel package to handle GitHub webhooks seamlessly by dispatching Laravel events for all GitHub events. Users can listen to and handle these events easily.
 
