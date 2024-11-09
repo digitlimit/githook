@@ -25,13 +25,6 @@ jobs:
       with:
         php-version: ${{ matrix.php-version }}
 
-    - name: Cache Composer dependencies
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: ${{ runner.os }}-composer-
-
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
