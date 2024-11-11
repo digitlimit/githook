@@ -6,7 +6,8 @@
 
 A Laravel package to handle GitHub webhooks seamlessly by dispatching Laravel events for all GitHub events. Users can listen to and handle these events easily.
 
-![image](https://github.com/user-attachments/assets/bfdce397-bb3b-4b8f-b66d-520392720c29)
+![image](https://github.com/user-attachments/assets/2390e740-96bd-4c3f-b848-60beee43674a)
+
 
 ## Installation
 
